@@ -17,7 +17,7 @@ class CoffeeMaker:
         """Returns True when order can be made, False if ingredients are insufficient."""
         can_make = True
         for item in drink.ingredients:
-            if drink.ingredients[item] > self.resources[item]:
+            if self.resources[item] < drink.ingredients[item]:
                 print(f"Sorry there is not enough {item}.")
                 can_make = False
         return can_make

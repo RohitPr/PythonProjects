@@ -4,13 +4,10 @@ from twilio.rest import Client
 
 OWM_Endpoint = "https://api.openweathermap.org/data/2.5/onecall"
 
+# Environment Variable to store the API key
 
-"""Environment Variable to store the API key"""
-api_key = os.environ.get("OWN_API_KEY")
-
-account_sid = os.environ['ACd88f803136f7778de3980efb321a6626']
-
-"""Environment Variable to store the API key"""
+api_key = os.environ.get('OWN_API_KEY')
+account_sid = os.environ['ACC_SID']
 auth_token = os.environ['AUTH_TOKEN']
 
 weather_params = {

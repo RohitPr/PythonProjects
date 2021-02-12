@@ -20,14 +20,14 @@ stock_response.raise_for_status()
 data = stock_response.json()
 stock_data = data["Time Series (Daily)"]
 
-# DATE TIME FUNCTION FOR TODAY AND TOMORROW
+# DATE TIME FUNCTION FOR TODAY AND YESTERDAY
 
 today = str(date.today() - timedelta(days=1))
 yesterday = str(date.today() - timedelta(days=2))
 today_stock_price = float(stock_data[today]["4. close"])
 yesterday_stock_price = float(stock_data[yesterday]["4. close"])
 
-#  NEWS API CALL FOR TSLA
+#  NEWS API CALL FOR TSLA NEWS
 
 news_params = {
     "q": COMPANY_NAME,

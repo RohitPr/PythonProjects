@@ -47,7 +47,7 @@ for a in range(0, int(news_data["totalResults"])):
     news_data_description = news_data["articles"][a]["description"]
     news[news_data_title] = news_data_description
 
-# CALCULATING STOCK DIFFERENCE AND CALLING NEWS IF DIFFERENCE MORE THAN 5
+# CALCULATING STOCK DIFFERENCE
 
 stock_difference = round((today_stock_price - yesterday_stock_price), 2)
 stock_diff_percent = round((stock_difference / yesterday_stock_price * 100), 2)
@@ -65,7 +65,8 @@ auth_token = os.environ['AUTH_TOKEN']
 
 client = Client(account_sid, auth_token)
 
-if stock_diff_percent < 5:
+# SENDING SMS WITH STOCKS DIFFERENCE AND NEWS IF DIFFERENCE MORE THAN 5
+if stock_diff_percent > 5:
     for key, value in news.items():
         message = client.messages \
             .create(

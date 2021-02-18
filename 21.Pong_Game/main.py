@@ -29,7 +29,7 @@ while game:
 
     # Detect Bat Collision
 
-    if player1.distance(ball) < 20 or player2.distance(ball) < 20:
+    if player1.distance(ball) < 30 or player2.distance(ball) < 30:
         ball.bat_collide()
 
     # Detect Wall Collision

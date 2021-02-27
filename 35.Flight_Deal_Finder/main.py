@@ -1,1 +1,1 @@
-#This file will need to use the DataManager,FlightSearch, FlightData, NotificationManager classes to achieve the program requirements.
+import class from data_manager#This file will need to use the DataManager,FlightSearch, FlightData, NotificationManager classes to achieve the program requirements.

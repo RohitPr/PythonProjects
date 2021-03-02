@@ -1,7 +1,6 @@
 import smtplib
 import requests
 from bs4 import BeautifulSoup
-import lxml
 
 MY_EMAIL = "email"
 MY_PASSWORD = "pass"

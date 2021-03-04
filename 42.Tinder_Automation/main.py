@@ -32,14 +32,14 @@ driver.switch_to.window(facebook_login_window)
 
 # Adds the FB Credentials to the Pop Up login window
 
-fb_email = driver.find_element_by_xpath('//*[@id="email"]')
-fb_password = driver.find_element_by_xpath('//*[@id="pass"]')
-fb_email.send_keys("email")
-fb_password.send_keys("password")
-fb_password.send_keys(Keys.ENTER)
+facebook_email = driver.find_element_by_xpath('//*[@id="email"]')
+facebook_password = driver.find_element_by_xpath('//*[@id="pass"]')
+facebook_email.send_keys("email")
+facebook_password.send_keys("password")
+facebook_password.send_keys(Keys.ENTER)
 sleep(5)
-fb_confirm = driver.find_element_by_name("__CONFIRM__")
-fb_confirm.click()
+facebook_confirm = driver.find_element_by_name("__CONFIRM__")
+facebook_confirm.click()
 
 # Switches to the main window and handles the pop ups
 

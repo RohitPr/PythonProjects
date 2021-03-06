@@ -15,7 +15,7 @@ data = response.text
 
 soup = BeautifulSoup(data, "html.parser")
 song_data = soup.find_all(
-    name="span", class_="chart-element__information__song text--truncate color--primary"
+    name="span", class_="chart-element__information__song text--truncate"
 )
 
 song_names = [song.getText() for song in song_data]

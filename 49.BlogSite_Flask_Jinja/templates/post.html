@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 
@@ -15,18 +14,13 @@
                 <h1>My Blog</h1>
             </div>
         </div>
-
-        {% for post in all_posts: %}
         <div class="content">
-            <div class="card ">
-                <h2>{{ post.title }}</h2>
-                <p>{{ post.subtitle }}</p>
-                <a href="{{ url_for('show_post', index=post.id) }}">Read</a>
+            <div class="card">
+                <h1> {{ post.title }}</h1>
+                <h2> {{ post.subtitle }}</h2>
+                <p> {{ post.body }}</p>
             </div>
-
         </div>
-        {% endfor %}
-
     </div>
 </body>
 <footer>

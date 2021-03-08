@@ -1,11 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Rohit's Name card</title>
-    <link rel="stylesheet" href="/static/styles.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Rohit's Design</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="/static/assets/css/main.css">
+  <noscript>
+    <link rel="stylesheet" href="/static/assets/css/noscript.css" />
+  </noscript>
 </head>
-<body>
-<h1>Hello World</h1>
+
+<body class="" contenteditable="true">
+  <div id="wrapper">
+    <div id="bg"></div>
+    <div id="overlay"></div>
+    <div id="main">
+
+      <!-- Header -->
+      <header id="header">
+        <h1>Rohit Prasad</h1>
+        <p>Python Developer •&nbsp; India&nbsp;</p>
+        <nav>
+          <ul>
+            <li><a href="https://twitter.com/RohitPr_95" class="icon brands fa-twitter"><span
+                  class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/rohitp95/" class="icon brands fa-facebook-f"><span
+                  class="label">Facebook</span></a></li>
+            <li><a href="https://dribbble.com/RohitPr" class="icon brands fa-dribbble"><span
+                  class="label">Dribbble</span></a></li>
+            <li><a href="https://github.com/RohitPr" class="icon brands fa-github"><span class="label">Github</span></a>
+            </li>
+            <li><a href="rohit.prasad95@outlook.com" class="icon solid fa-envelope"><span class="label">Email</span></a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Footer -->
+      <footer id="footer">
+        <span class="copyright">© RohitPr</span>
+      </footer>
+
+    </div>
+  </div>
+  <script>
+    window.onload = function () { document.body.classList.remove('is-preload'); }
+    window.ontouchmove = function () { return false; }
+    window.onorientationchange = function () { document.body.scrollTop = 0; }
+  </script>
+
 </body>
+
 </html>

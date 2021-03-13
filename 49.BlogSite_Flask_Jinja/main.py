@@ -2,6 +2,8 @@ from flask import Flask, render_template
 from post import Post
 import requests
 
+# Custom API Endpoint for Custom Data
+
 posts = requests.get("https://api.npoint.io/5abcca6f4e39b4955965").json()
 post_objects = []
 for post in posts:

@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 import requests
 
+# Custom API Created using npoint and saved it in JSON format
 API_URL = "https://api.npoint.io/2722c84e8ff4b2ddbd15"
 
 posts = requests.get(API_URL).json()

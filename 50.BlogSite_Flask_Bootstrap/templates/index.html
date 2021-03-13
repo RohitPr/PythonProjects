@@ -1,3 +1,4 @@
+<!-- Created Header and Footer Modules to increase efficiency of the code -->
 {% include "header.html" %}
 
 <!-- Page Header -->
@@ -22,6 +23,7 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="post-preview">
+          <!-- Calling each Post item in Post JSON variable to display each article  -->
           {% for post in posts %}
           <a href="post.html">
             <h2 class="post-title">

@@ -25,7 +25,7 @@
         <div class="post-preview">
           <!-- Calling each Post item in Post JSON variable to display each article  -->
           {% for post in posts %}
-          <a href="post.html">
+          <a href="{{url_for('show_post', index = post.id)}}">
             <h2 class="post-title">
               {{ post.title }}
             </h2>

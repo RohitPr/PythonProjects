@@ -25,5 +25,14 @@ def about():
     return render_template('about.html')
 
 
+@app.route('/post/<int:index>')
+def show_post(index):
+    requested_post = None
+    for post in posts:
+        if post["id"] == index:
+            requested_post = post
+    return render_template("post.html", post=requested_post)
+
+
 if __name__ == "__main__":
     app.run(debug=True)

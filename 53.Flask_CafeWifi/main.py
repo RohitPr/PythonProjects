@@ -16,9 +16,9 @@ class CafeForm(FlaskForm):
     cafe = StringField('Cafe name', validators=[DataRequired()])
     location = StringField("Cafe Location on Google Maps (URL)", validators=[
                            DataRequired(), URL()])
-    open = TimeField("Opening Time e.g. 8AM",
+    open = TimeField("Opening Time",
                      validators=[DataRequired()])
-    close = TimeField("Closing Time e.g. 5:30PM",
+    close = TimeField("Closing Time",
                       validators=[DataRequired()])
     coffee_rating = SelectField("Coffee Rating", choices=[
         "☕️", "☕☕", "☕☕☕", "☕☕☕☕", "☕☕☕☕☕"], validators=[DataRequired()])

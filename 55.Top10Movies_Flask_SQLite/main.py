@@ -73,6 +73,8 @@ def home():
     all_movies = db.session.query(Movie).all()
     return render_template("index.html", movies=all_movies)
 
+# Edits/Updates the Review for the movie selected in the database
+
 
 @ app.route('/edit', methods=['GET', 'POST'])
 def edit():
@@ -86,6 +88,8 @@ def edit():
     movie_selected = Movie.query.get(movie_id)
     return render_template('edit.html', form=form, movie=movie_selected)
 
+# Deletes the movie data from the database
+
 
 @ app.route('/delete')
 def delete():
@@ -94,6 +98,8 @@ def delete():
     db.session.delete(movie_to_delete)
     db.session.commit()
     return redirect(url_for('home'))
+
+# Retrieves a list of movies details using the TMDB API for the Movie Name entered by User
 
 
 movie_data = []
@@ -118,6 +124,8 @@ def add():
             })
         return render_template('select.html', all_movies=movie_data)
     return render_template('add.html', form=form)
+
+# User selects the movie they want to add to the Database
 
 
 @ app.route('/select')

@@ -20,7 +20,6 @@
         <div class="col-sm-12 col-md-8">
             {{ ckeditor.load() }}
             {{ ckeditor.config(name='body') }}
-            {{post.body|safe}}
             {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
         </div>
     </div>

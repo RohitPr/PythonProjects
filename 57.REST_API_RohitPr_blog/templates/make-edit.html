@@ -21,7 +21,6 @@
 
             {{ ckeditor.load() }}
             {{ ckeditor.config(name='body') }}
-            {‌{post.body|safe}}
             {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
 
         </div>

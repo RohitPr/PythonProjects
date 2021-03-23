@@ -1,0 +1,29 @@
+{% include "header.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+<header class="masthead" style="background-image: url('/static/img/new-blog.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Rohit's Blog</h1>
+                    <span class="subheading">Add A New Blog Post</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-8">
+
+            {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% include "footer.html" %}

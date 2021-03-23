@@ -48,9 +48,10 @@ def show_post(post_id):
     return render_template("post.html", post=requested_post)
 
 
-@app.route("/new-post")
+@app.route("/new-post", methods=['GET', 'POST'])
 def new_post():
-    return render_template("post.html")
+    form = CreatePostForm()
+    return render_template("new-post.html", form=form)
 
 
 @app.route("/about")

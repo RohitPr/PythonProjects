@@ -52,7 +52,7 @@ def show_post(post_id):
     requested_post = BlogPost.query.get(post_id)
     return render_template("post.html", post=requested_post)
 
-
+# Create a New Blog
 @app.route("/new-post", methods=['GET', 'POST'])
 def new_post():
     form = CreatePostForm()
@@ -71,7 +71,7 @@ def new_post():
         return redirect(url_for('index'))
     return render_template("new-post.html", form=form)
 
-
+# Edit Blog
 @app.route("/edit-post/<int:post_id>", methods=["GET", "POST"])
 def edit_post(post_id):
     post = BlogPost.query.get(post_id)
@@ -93,7 +93,7 @@ def edit_post(post_id):
         return redirect(url_for("show_post", post_id=post.id))
     return render_template("make-edit.html", form=edit_form)
 
-
+# Delete Blog
 @app.route("/delete/<int:post_id>")
 def delete_post(post_id):
     post_to_delete = BlogPost.query.get(post_id)

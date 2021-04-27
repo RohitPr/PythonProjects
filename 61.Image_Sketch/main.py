@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-jc = cv2.imread("img/orig2.jpg")
+jc = cv2.imread("img/orig.jpg")
 
 scale_percent = 0.60
 

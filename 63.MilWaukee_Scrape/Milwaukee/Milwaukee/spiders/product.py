@@ -20,8 +20,12 @@ class ProductSpider(scrapy.Spider):
         data = response.css("div.product-specs__row span::text").getall()
         specs = {data[i]: data[i + 1] for i in range(0, len(data), 2)}
         zoom_image = response.css("div.media-gallery__img img::attr(src)").get()
-        thumbnail = response.css("div.media-gallery__thumb-inn img::attr(src)").get()
-        images = {"Zoom Image": zoom_image, "Thumbnail": thumbnail}
+        thumbnail = response.css("div.media-gallery__thumb-inn img::attr(src)").getall()
+        images = {
+            "Detailed_Image": zoom_image,
+            "Zoom_Image": zoom_image,
+            "Item_Image": thumbnail,
+        }
         include = response.css("span.product-include__title::text").getall()
         include_data = "|".join(include)
         includes = include_data.replace("												", "")

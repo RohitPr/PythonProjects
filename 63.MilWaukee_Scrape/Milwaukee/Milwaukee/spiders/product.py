@@ -18,6 +18,8 @@ class ProductSpider(scrapy.Spider):
         feature = response.css("div.product-features li::text").getall()
         feature_data = "|".join(feature)
         features = feature_data.replace("	", "")
+        sku_code = []
+        sku_code.append(response.css("a.active span::text").get())
         data = response.css("div.product-specs__row span::text").getall()
         specs = {data[i]: data[i + 1] for i in range(0, len(data), 2)}
         main_image = response.css("div.media-gallery__thumb::attr(data-main)").getall()
@@ -58,7 +60,7 @@ class ProductSpider(scrapy.Spider):
             "Brand": "Milwaukee Tools",
             "Manufacturer": "Milwaukee Tools",
             "Country": response.xpath("/html/head/meta[18]/@content").extract(),
-            "Product SKU": response.css("a.active span::text").get(),
+            "Product SKU": sku_code,
             "Short_Description": response.xpath(
                 "/html/head/meta[8]/@content"
             ).extract(),

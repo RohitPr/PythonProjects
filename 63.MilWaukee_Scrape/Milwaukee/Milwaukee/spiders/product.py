@@ -26,7 +26,10 @@ class ProductSpider(scrapy.Spider):
             "div.media-gallery__thumb-video::attr(data-main)"
         ).extract()
         video_str = "".join(video_data)
-        video = url + video_str
+        if len(video_str) > 1:
+            video = url + video_str
+        else:
+            video = ""
         images = []
         for a in range(len(main_image)):
             images.append(
@@ -55,7 +58,7 @@ class ProductSpider(scrapy.Spider):
             "Brand": "Milwaukee Tools",
             "Manufacturer": "Milwaukee Tools",
             "Country": response.xpath("/html/head/meta[18]/@content").extract(),
-            "Product SKU": response.css("span.tab__title::text").get(),
+            "Product SKU": response.css("a.active span::text").get(),
             "Short_Description": response.xpath(
                 "/html/head/meta[8]/@content"
             ).extract(),

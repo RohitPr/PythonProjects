@@ -18,10 +18,18 @@ class ProductSpider(scrapy.Spider):
         feature = response.css("div.product-features li::text").getall()
         feature_data = "|".join(feature)
         features = feature_data.replace("	", "")
-        sku_code = []
-        sku_code.append(response.css("a.active span::text").get())
-        data = response.css("div.product-specs__row span::text").getall()
-        specs = {data[i]: data[i + 1] for i in range(0, len(data), 2)}
+        specs_data = response.css("div.product-specs__row span::text").getall()
+        if len(specs_data) < 1:
+            specs_data_key = response.css("dl.tech-specs dt::text").getall()
+            specs_data_value = response.css("dl.tech-specs dd::text").getall()
+            specs = {
+                specs_data_key[i]: specs_data_value[i]
+                for i in range(0, len(specs_data_key))
+            }
+        else:
+            specs = {
+                specs_data[i]: specs_data[i + 1] for i in range(0, len(specs_data), 2)
+            }
         main_image = response.css("div.media-gallery__thumb::attr(data-main)").getall()
         thumbnail = response.css("div.media-gallery__thumb-inn img::attr(src)").getall()
         video_data = response.css(
@@ -57,13 +65,13 @@ class ProductSpider(scrapy.Spider):
             .extract()
             .split(".com/")[1],
             "Title": response.css("title::text").get(),
-            "Brand": "Milwaukee Tools",
-            "Manufacturer": "Milwaukee Tools",
-            "Country": response.xpath("/html/head/meta[18]/@content").extract(),
-            "Product SKU": sku_code,
-            "Short_Description": response.xpath(
-                "/html/head/meta[8]/@content"
-            ).extract(),
+            "Brand": "Milwaukee Tool",
+            "Manufacturer": "Milwaukee Tool",
+            "Country": "US",
+            "Product SKU": response.xpath("//meta[@property='og:url']/@content")[0]
+            .extract()
+            .split("/")[-1],
+            "Short_Description": response.xpath('/html/head/meta[5]/@content').extract(),
             "Long_Description": response.css(
                 "div.product-info__overview p::text"
             ).get(),

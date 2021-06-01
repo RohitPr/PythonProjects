@@ -1,12 +1,29 @@
 import json
 import datetime
-from datetime import datetime
+from datetime import datetime, timedelta
+import requests
 import sqlite3
 import sqlite3
 import sqlalchemy
 from sqlalchemy.orm import sessionmaker
-import requests
 
 DATABASE_LOCATION = "sqlite:///my_played_tracks.sqlite"
 USER_ID = "v5gqmoefaafptlgwxtbqasude"
-TOKEN = "BQDzpiPCNeemYgUA2szdb1q2SvZsvF0gdOEreAaWU1eopXSMvSgCBsg_SS70y-r4SIPPTOqoB4W5G9LjjzwZQMejMHKKL9o14CRF57U3-v1QNi3q0SRE6YmNrcwFZRMe3hvVat3POR7kDAUvW_IY2oVeMEVI8MoRP6fQ"
+TOKEN = "BQABeiAEQH0WAyY4bESu4sXqb2m1Q-pyf4ewGwZ8Vo3oGwhodFRL91y0pP9JNAfEaG_DKlOr_2NheJstXGbRq4IWXWCqifCoSwtAUfot7NRh1zYOf8cqw5YuF-HRjI0sJASdYO5hbQ-0YFB-cf6g4zGceaJPMV3Ir4Hv"
+
+if __name__ == "__main__":
+    headers = {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": "Bearer {token}".format(token=TOKEN)
+    }
+
+today = datetime.now()
+yesterday = today - timedelta(days=1)
+yesterday_timestamp = int(yesterday.timestamp()) * 1000
+
+spotify_request = requests.get(
+    "https://api.spotify.com/v1/me/player/recently-played?after={time}".format(time=yesterday_timestamp), headers=headers)
+
+spotify_data = spotify_request.json()
+print(spotify_data)

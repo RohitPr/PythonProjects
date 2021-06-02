@@ -13,6 +13,8 @@ DATABASE_LOCATION = "sqlite:///my_played_tracks.sqlite"
 USER_ID = "v5gqmoefaafptlgwxtbqasude"
 TOKEN = "BQDSOtE55jU_G-EsiLc4n3kPOfrtsRNvrbU9wGDqUFrHNau-LdXa8MNpuKwO9r1Q6fkpfv7DVTqRuYQaZ7B7-pKKDhmxLd22x5gnWnlXJyf7oxGajcFdFTMLidMuq5S-ejBAdX_bUg0K_czZ_nYrpLQx9Gpz6HcTdWSq"
 
+# Function to check for Edge Cases and Abnormalities
+
 
 def check_valid_data(df: pd.DataFrame) -> bool:
 

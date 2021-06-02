@@ -6,7 +6,6 @@ import pandas as pd
 import sqlite3
 import sqlalchemy
 from sqlalchemy import engine
-from sqlalchemy.orm import sessionmaker
 
 
 DATABASE_LOCATION = "sqlite:///my_played_tracks.sqlite"

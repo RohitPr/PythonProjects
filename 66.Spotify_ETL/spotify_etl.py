@@ -1,6 +1,5 @@
 import datetime
 from datetime import datetime, timedelta
-from numpy.lib.function_base import append
 import requests
 import pandas as pd
 import sqlite3

@@ -118,5 +118,5 @@ except:
     print("Data already exists in the Database")
 
 connection.close()
-
 print("Connection Closed")
+    

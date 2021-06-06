@@ -7,11 +7,6 @@ import sqlite3
 import sqlalchemy
 from sqlalchemy import engine
 
-
-DATABASE_LOCATION = "sqlite:///my_played_tracks.sqlite"
-USER_ID = "v5gqmoefaafptlgwxtbqasude"
-TOKEN = "BQDSOtE55jU_G-EsiLc4n3kPOfrtsRNvrbU9wGDqUFrHNau-LdXa8MNpuKwO9r1Q6fkpfv7DVTqRuYQaZ7B7-pKKDhmxLd22x5gnWnlXJyf7oxGajcFdFTMLidMuq5S-ejBAdX_bUg0K_czZ_nYrpLQx9Gpz6HcTdWSq"
-
 # Function to check for Edge Cases and Abnormalities
 
 
@@ -41,21 +36,26 @@ def check_valid_data(df: pd.DataFrame) -> bool:
     return True
 
 
-if __name__ == "__main__":
-    headers = {
+def run_spotify_etl():
+
+    database_location = "sqlite:///my_played_tracks.sqlite"
+    token = "BQDSOtE55jU_G-EsiLc4n3kPOfrtsRNvrbU9wGDqUFrHNau-LdXa8MNpuKwO9r1Q6fkpfv7DVTqRuYQaZ7B7-pKKDhmxLd22x5gnWnlXJyf7oxGajcFdFTMLidMuq5S-ejBAdX_bUg0K_czZ_nYrpLQx9Gpz6HcTdWSq"
+
+    headers_data = {
         "Accept": "application/json",
         "Content-Type": "application/json",
-        "Authorization": "Bearer {token}".format(token=TOKEN)
+        "Authorization": "Bearer {token}".format(token=token)
     }
 
 #  Take Yesterday's Date and change it to miliseconds and pass it as header for the request
+
 
 today = datetime.now()
 yesterday = today - timedelta(days=1)
 yesterday_timestamp = int(yesterday.timestamp()) * 1000
 
 spotify_request = requests.get(
-    "https://api.spotify.com/v1/me/player/recently-played?after={time}".format(time=yesterday_timestamp), headers=headers)
+    "https://api.spotify.com/v1/me/player/recently-played?after={time}".format(time=yesterday_timestamp), headers=headers_data)
 
 spotify_data = spotify_request.json()
 print(spotify_data)
@@ -93,7 +93,7 @@ if check_valid_data(songs_df):
 
 #  Creating DB Engine and connecting to the DB
 
-db_engine = sqlalchemy.create_engine(DATABASE_LOCATION)
+db_engine = sqlalchemy.create_engine(database_location)
 connection = sqlite3.connect('my_spotify_songs.sqlite')
 cursor = connection.cursor()
 
@@ -119,4 +119,3 @@ except:
 
 connection.close()
 print("Connection Closed")
-    

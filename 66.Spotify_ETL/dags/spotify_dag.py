@@ -2,6 +2,7 @@ from datetime import timedelta
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.utils.timezone import datetime
+from spotify_etl import run_spotify_etl
 
 default_args = {
     'owner': 'airflow',
@@ -17,12 +18,7 @@ default_args = {
 dag = DAG('spotify_dag', default_args=default_args,
           description='Our Spotify DAG', schedule_interval=timedelta(days=1))
 
-
-def run_spotify_func():
-    print("Hello")
-
-
 run_etl = PythonOperator(task_id="complete_spotify_etl",
-                         python_callable=run_spotify_func, dag=dag)
+                         python_callable=run_spotify_etl, dag=dag)
 
 run_etl
